@@ -4,7 +4,8 @@
       <router-link to='/homePage'>首页</router-link>
       <router-link to='/country' >书城</router-link>
       <router-link to='/person'>用户</router-link>
-      <router-link to='/setting'>设置</router-link>
+      <router-link to='/setting'>设置(弹窗组件)</router-link>
+      <router-link to='/other'>其他(验证码组件)</router-link>
 
 
     
@@ -40,5 +41,9 @@ export default {
   height:100%;
   overflow: hidden;
   float: left;
+}
+a{
+  font-size: 18px;
+  display:block;
 }
 </style>
