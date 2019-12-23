@@ -4,8 +4,9 @@ import Country from '@/components/Country'
 import HomePage from '@/components/HomePage'
 import NavBar from '@/common/NavBar/NavBar'
 import Person from '@/components/Person'
-import Other from '@/components/Other'
-import Setting from '@/components/Setting'
+import IdentifyCode from '@/components/IdentifyCode'
+import Model from '@/components/Model'
+import InfiniteScroll from '@/common/infiniteScroll/InfiniteScroll.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -35,15 +36,20 @@ export default new Router({
       component:Person
     },
     {
-      path:'/other',
-      name:'other',
-      component:Other
+      path:'/identifyCode',
+      name:'IdentifyCode',
+      component:IdentifyCode
     },
     {
-      path:'/setting/',
-      name:'setting',
-      component:Setting
+      path:'/model',
+      name:'Model',
+      component:Model
     },
+    {
+      path:'/infiniteScroll',
+      name:'InfiniteScroll',
+      component:InfiniteScroll
+    }
     
   ]
 })

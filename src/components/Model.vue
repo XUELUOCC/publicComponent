@@ -1,12 +1,12 @@
 <template>
   <div>
       <!-- <navBar></navBar> -->
- <h1>设置页面</h1>
+ <!-- <h1>设置页面</h1> -->
  
- <a-select defaultValue="lucy" style="width: 120px" >
+ <!-- <a-select defaultValue="lucy" style="width: 120px" >
       <a-select-option value="1">Jack</a-select-option>
       <a-select-option value="0">Lucy</a-select-option>
-    </a-select>
+    </a-select> -->
 
     <el-button type="primary" @click='test'>弹窗</el-button>
   </div>
@@ -28,7 +28,7 @@ export default {
   store,
   methods: {
     test(){
-      this.$store.commit('setShow')
+      // this.$store.commit('setShow')
        console.log(this.$store.state.isShow)
       this.$Myconfirm({
         title:'弹窗主题',
@@ -38,13 +38,13 @@ export default {
           no:'取消'
         }
       }).then(()=>{
-        // that.$message('你点击了确定')
-        this.$store.commit('setHidden')
+        that.$message('你点击了确定')
+        // this.$store.commit('setHidden')
         // console.log(this.$store.state.isShow)
       }).catch(()=>{
         // that.$message('你点击了取消')
         console.log('点击失败')
-        this.$store.commit('setHidden')
+        // this.$store.commit('setHidden')
         //  console.log(this.$store.state.isShow)
       })
     }

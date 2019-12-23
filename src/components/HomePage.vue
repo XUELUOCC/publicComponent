@@ -7,15 +7,15 @@
       <mt-button icon="more" slot="right"></mt-button>
     </mt-header>
       <!-- <navBar></navBar> -->
-      <h1>首页</h1>
-        <a-tree-select
+      <!-- <h1>首页</h1> -->
+        <!-- <a-tree-select
     style="width: 300px"
     :treeData="treeData"
     treeCheckable
     @select='select'
     :showCheckedStrategy="SHOW_PARENT"
     searchPlaceholder="Please select"
-  />
+  /> -->
   </div>
 </template>
 

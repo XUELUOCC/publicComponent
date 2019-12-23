@@ -4,8 +4,9 @@
       <router-link to='/homePage'>首页</router-link>
       <router-link to='/country' >书城</router-link>
       <router-link to='/person'>用户</router-link>
-      <router-link to='/setting'>设置(弹窗组件)</router-link>
-      <router-link to='/other'>其他(验证码组件)</router-link>
+      <router-link to='/model'>弹窗组件</router-link>
+      <router-link to='/identifyCode'>验证码组件</router-link>
+      <router-link to='/infiniteScroll'>无限下拉滚动指令</router-link>
 
 
     
