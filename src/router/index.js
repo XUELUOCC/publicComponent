@@ -7,6 +7,7 @@ import Person from '@/components/Person'
 import IdentifyCode from '@/components/IdentifyCode'
 import Model from '@/components/Model'
 import InfiniteScroll from '@/common/infiniteScroll/InfiniteScroll.vue'
+import DatePicker from '@/common/DatePicker/DatePicker.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -49,6 +50,11 @@ export default new Router({
       path:'/infiniteScroll',
       name:'InfiniteScroll',
       component:InfiniteScroll
+    },
+    {
+      path:'/datePicker',
+      name:'DatePicker',
+      component:DatePicker
     }
     
   ]
