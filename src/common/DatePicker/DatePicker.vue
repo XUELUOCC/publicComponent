@@ -133,13 +133,10 @@ export default {
       console.log(this.month)
       //当前显示的天数
       this.dateList=[];
-      // console.log(new Date(new Date(2019,10,0).getTime()-1000*3600*24).getDate()+1)
       this.dayItems=new Date(new Date(this.year,this.month,0).getTime()-1000*3600*24).getDate()+1;
-      // console.log(this.dayItems)
       for(var i=1;i<this.dayItems+1;i++){
         this.dateList.push(i);
       }
-      // console.log(this.dateList)
       //上一个月的天数
       var lastDate=new Date(new Date(this.year,this.month-1,0).getTime()-1000*3600*24).getDate()+1;
       console.log(lastDate)
@@ -176,9 +173,6 @@ export default {
     setStyle(index){
       console.log(index)
        var leng=this.dateList.slice(0,this.listWeek.length)   //截取上一个月的最后几天，获取其长度
-      // if(leng>index){
-      //   this
-      // }
        for(var i=0;i<this.dateList.length;i++){
         if(index==i){
           console.log(index,i)
