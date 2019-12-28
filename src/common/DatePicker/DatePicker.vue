@@ -7,7 +7,7 @@
             <span @click="DateYearReduce" class="el-icon-d-arrow-left"></span>
             <span @click="DateMonthReduce"  class="el-icon-arrow-left"></span>
             <!-- <span  class="el-icon-arrow-left"></span> -->
-            <span>{{year}}年{{month}}月{{day}}号</span>
+            <span v-text="date"></span>
             <span @click="DateMonthAdd"  class="el-icon-arrow-right"></span>
             <!-- <span  class="el-icon-arrow-right"></span> -->
             <span @click="DateYearAdd" class="el-icon-d-arrow-right"></span>
@@ -21,7 +21,8 @@
           </ul>
           <ul class="weekList">
             <li v-for="(item,index) in dateList" :key="index"  >
-              <span :class="{'item':itemIndex==index}">{{item}}</span>
+              <span :class="{'item':itemIndex==index}" @click="setStyle(index)">{{item}}</span>
+              <!-- <span :class="{'item':this.day==index}" @click="setStyle(index)">{{item}}</span> -->
             </li>
           </ul>
         </div>
@@ -66,32 +67,41 @@ export default {
       dateList:[],
       stamp:new Date(),
       date:'',
-      year:'',
-      month:'',
-      day:'',
+      year:'22',
+      month:'33',
+      day:'44',
       dayItems:'',
-      // itemIndex:false
+      flag:false,
+      itemIndex:''
     }
   },
   mounted(){
-    console.log(new Date().getDay())
-    this.year=new Date().getFullYear();
-    this.month= new Date().getMonth()+1;
-    this.day=new Date().getDate();
-    this.date=this.year+'-'+this.month+'-'+this.day;
-    this.setDay();
+    this.getList()
   },
   methods: {
+    //重加载函数
+    getList(){
+      console.log('重加载')
+      console.log(new Date().getDay())
+      this.year=new Date().getFullYear();
+      this.month= new Date().getMonth()+1;
+      this.day=new Date().getDate();
+      this.date=this.year+'年'+this.month+'月'+this.day+'日';
+      console.log(this.date)
+      this.setDay();
+    },
     //年份递减
     DateYearReduce(){
       console.log(this.date)
       this.year=this.year-1;
       this.setDay()
+      this.date=this.year+'年'+this.month+'月'+this.day+'日';
     },
     //年份增加
     DateYearAdd(){
        this.year=this.year+1;
        this.setDay()
+       this.date=this.year+'年'+this.month+'月'+this.day+'日';
     },
     //月份递减
     DateMonthReduce(){
@@ -101,21 +111,25 @@ export default {
         this.year--;
         this.month=12;
       }
+      this.date=this.year+'年'+this.month+'月'+this.day+'日';
        this.setDay()
     },
     //月份增加
     DateMonthAdd(){
       console.log('增加是')
       console.log(this.month)
-      this.month=parseInt(this.month+1) ;
+      this.month=parseInt(this.month) +1;
       console.log(this.month)
-      // if(this.month>=12){
+      if(this.month>12){
         this.year++;
         this.month=1;
-      // }
+      }
+      console.log(this.month,this.year)
        this.setDay()
+      this.date=this.year+'年'+this.month+'月'+this.day+'日';
     },
     setDay(){
+      console.log(this.month)
       //当前显示的天数
       this.dateList=[];
       // console.log(new Date(new Date(2019,10,0).getTime()-1000*3600*24).getDate()+1)
@@ -126,12 +140,8 @@ export default {
       }
       // console.log(this.dateList)
       //上一个月的天数
-      if(parseInt(this.month-1)==0){
-          this.year=parseInt(this.year-1) ;
-          this.month='12'
-      }
       var lastDate=new Date(new Date(this.year,this.month-1,0).getTime()-1000*3600*24).getDate()+1;
-      // console.log(lastDate)
+      console.log(lastDate)
       //判断每个月的第一天星期
       var weekDay=new Date(this.year+'-'+this.month+'-'+1).getDay();
       // console.log(this.year,this.month,this.day, weekDay)
@@ -142,16 +152,25 @@ export default {
         this.dateList.unshift('')
       }
       console.log(this.dateList)
+      console.log(this.month,this.year)
+      this.date=this.year+'年'+this.month+'月'+this.day+'日';
 
       //给当前日期添加样式
       for(var i=0;i<this.dateList.length;i++){
         if(this.day==this.dateList[i]){
           this.itemIndex=i;
+          // this.flag=true;
         }
       }
     },
     setStyle(index){
-      // console.log(index)
+      console.log(index)
+       for(var i=0;i<this.dateList.length;i++){
+        if(index==i){
+          console.log(index,i)
+          this.itemIndex=i;
+        }
+      }
     }
   }
 }
@@ -196,7 +215,7 @@ export default {
   width:65%;
   height:100%;
   margin:0 auto;
-  border:1px solid red;
+  /* border:1px solid red; */
   display:flex;
   justify-content: center;
   align-items: center;
