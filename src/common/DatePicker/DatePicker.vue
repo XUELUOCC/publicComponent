@@ -65,6 +65,7 @@ export default {
         }
       ],
       dateList:[],
+      listWeek:[],
       stamp:new Date(),
       date:'',
       year:'22',
@@ -144,13 +145,21 @@ export default {
       console.log(lastDate)
       //判断每个月的第一天星期
       var weekDay=new Date(this.year+'-'+this.month+'-'+1).getDay();
-      // console.log(this.year,this.month,this.day, weekDay)
+      console.log(this.year,this.month,this.day, weekDay)
       if(weekDay==0){
         weekDay=7;
       }
+      //计算和添加空缺的几天
+      //创建一个空数组listWeek，作为媒介，获取到weekDay的每一项
       for(var i=0;i<weekDay-1;i++){
-        this.dateList.unshift('')
+        // this.dateList.unshift('')
+        console.log(weekDay[i])
+        this.listWeek.push(i)
+        //计算和添加空缺的几天
+        this.dateList.unshift(lastDate-this.listWeek[i])
+        
       }
+      //
       console.log(this.dateList)
       console.log(this.month,this.year)
       this.date=this.year+'年'+this.month+'月'+this.day+'日';
@@ -163,12 +172,20 @@ export default {
         }
       }
     },
+    //点击，span样式改变
     setStyle(index){
       console.log(index)
+       var leng=this.dateList.slice(0,this.listWeek.length)   //截取上一个月的最后几天，获取其长度
+      // if(leng>index){
+      //   this
+      // }
        for(var i=0;i<this.dateList.length;i++){
         if(index==i){
           console.log(index,i)
           this.itemIndex=i;
+          this.day=this.dateList[i];
+          console.log(leng)
+          this.date=this.year+'年'+this.month+'月'+this.day+'日';
         }
       }
     }
