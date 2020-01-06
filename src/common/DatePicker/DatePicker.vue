@@ -7,7 +7,7 @@
             <span @click="DateYearReduce" class="el-icon-d-arrow-left"></span>
             <span @click="DateMonthReduce"  class="el-icon-arrow-left"></span>
             <!-- <span  class="el-icon-arrow-left"></span> -->
-            <span v-text="date"></span>
+            <span v-text="date" ></span>
             <span @click="DateMonthAdd"  class="el-icon-arrow-right"></span>
             <!-- <span  class="el-icon-arrow-right"></span> -->
             <span @click="DateYearAdd" class="el-icon-d-arrow-right"></span>
@@ -172,14 +172,25 @@ export default {
     //点击，span样式改变
     setStyle(index){
       console.log(index)
-       var leng=this.dateList.slice(0,this.listWeek.length)   //截取上一个月的最后几天，获取其长度
+       var lastArr=this.dateList.slice(0,this.listWeek.length)   //截取上一个月的最后几天，获取其长度
        for(var i=0;i<this.dateList.length;i++){
         if(index==i){
           console.log(index,i)
           this.itemIndex=i;
           this.day=this.dateList[i];
-          console.log(leng)
-          this.date=this.year+'年'+this.month+'月'+this.day+'日';
+          console.log(i)
+          if(lastArr.length>i ){
+            if(this.month>1){
+               this.date=(this.year-1)+'年'+this.month+'月'+this.day+'日';
+            }else{
+              this.date=(this.year-1)+'年'+12+'月'+this.day+'日';
+            }
+          
+           console.log(this.date)
+          }else{
+            this.date=this.year+'年'+this.month+'月'+this.day+'日';
+          }
+          
         }
       }
     }
