@@ -5,3 +5,5 @@
 随机验证码组件，在其他common/identify/identify.vue中，即创建一个子组件，然后再父组件中进行调用
 
 鼠标滚动无限加载指令，在src\common\infiniteScroll中，即自定义指令，监听scroll事件，实现无限滚动
+
+日历组件，在src\common\DatePicker中，实现基本的日历切换和查看功能
