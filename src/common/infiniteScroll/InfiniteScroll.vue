@@ -1,6 +1,6 @@
 <template>
   <div id='scroll' v-scroll="loadMore">
-      <ul>
+      <ul >
           <li v-for='item in persons' :key=item.id>{{item.value}}</li>
       </ul>
   </div>
@@ -79,10 +79,11 @@ export default {
   directives: {
     scroll: {
         //inserted:DOM节点刷新完成
-        //scroll事件：是元素滚动才能触发！！！父元素#scroll并没有滚动，此时滚动的是#scroll中的子元素ul，注意！！！！是el滚动才能触发事件
+        //scroll事件：是元素滚动才能触发！！！父元素中的ul并没有滚动，此时滚动的是#scroll，注意！！！！是el滚动才能触发事件
         inserted: function (el, binding){
             el.addEventListener('scroll', ()=> {
                 console.log('滚动')
+                //  console.log(el)
                 //scrollTop+clientHeight==scrollHeight --------滚动条到达底部的条件--------当>=时说明刷新出来的数据大于内容区域的范围
                 if(el.scrollTop + el.clientHeight >= el.firstChild.scrollHeight) {
                     console.log('load dataing');
@@ -104,6 +105,9 @@ export default {
             value:'111',
             text:'一'
        })
+    },
+    scrolls(){
+        console.log('kkkkkk')
     }
   }
 }
