@@ -73,7 +73,9 @@ export default {
       day:'44',
       dayItems:'',
       flag:false,
-      itemIndex:''
+      itemIndex:'',
+      lastArr:'',  //上一个月的显示出来的天数数组
+      tips:'',     //存储每个月第一天的索引
     }
   },
   mounted(){
@@ -133,6 +135,7 @@ export default {
       console.log(this.month)
       //当前显示的天数
       this.dateList=[];
+      this.listWeek=[];
       this.dayItems=new Date(new Date(this.year,this.month,0).getTime()-1000*3600*24).getDate()+1;
       for(var i=1;i<this.dayItems+1;i++){
         this.dateList.push(i);
@@ -150,11 +153,13 @@ export default {
       //创建一个空数组listWeek，作为媒介，获取到weekDay的每一项
       for(var i=0;i<weekDay-1;i++){
         // this.dateList.unshift('')
-        console.log(weekDay[i])
+        console.log(weekDay)
+        console.log(i)
         this.listWeek.push(i)
+        console.log(this.listWeek)
+        console.log()
         //计算和添加空缺的几天
-        this.dateList.unshift(lastDate-this.listWeek[i])
-        
+        this.dateList.unshift(lastDate-this.listWeek[i])    
       }
       //
       console.log(this.dateList)
@@ -172,27 +177,34 @@ export default {
     //点击，span样式改变
     setStyle(index){
       console.log(index)
-       var lastArr=this.dateList.slice(0,this.listWeek.length)   //截取上一个月的最后几天，获取其长度
-       for(var i=0;i<this.dateList.length;i++){
-        if(index==i){
-          console.log(index,i)
-          this.itemIndex=i;
-          this.day=this.dateList[i];
-          console.log(i)
-          if(lastArr.length>i ){
-            if(this.month>1){
-               this.date=(this.year-1)+'年'+this.month+'月'+this.day+'日';
+      console.log(this.listWeek.length)
+      console.log(this.dateList)
+      console.log(this.tips)
+        for(var i=0;i<this.dateList.length;i++){
+          //  console.log(this.dateList[i])
+          if(index==i){
+            console.log(index,i)
+            this.itemIndex=i;
+            this.day=this.dateList[i];
+            this.lastArr=this.dateList.slice(0,this.listWeek.length) 
+            console.log(this.lastArr)
+            console.log(i)
+            console.log(this.lastArr.length)
+            if(this.lastArr.length>=i+1 ){
+              console.log(i+1)
+              if(this.month>1){
+                this.date=this.year+'年'+(this.month-1)+'月'+this.day+'日';
+              }else{
+                this.date=(this.year-1)+'年'+12+'月'+this.day+'日';
+              }
+            console.log(this.date)
             }else{
-              this.date=(this.year-1)+'年'+12+'月'+this.day+'日';
+              this.date=this.year+'年'+this.month+'月'+this.day+'日';
             }
-          
-           console.log(this.date)
-          }else{
-            this.date=this.year+'年'+this.month+'月'+this.day+'日';
+            
           }
-          
         }
-      }
+       
     }
   }
 }
