@@ -134,8 +134,8 @@ export default {
     setDay(){
       console.log(this.month)
       //当前显示的天数
-      this.dateList=[];
-      this.listWeek=[];
+      this.dateList=[];   //初始化
+      this.listWeek=[];   //初始化
       this.dayItems=new Date(new Date(this.year,this.month,0).getTime()-1000*3600*24).getDate()+1;
       for(var i=1;i<this.dayItems+1;i++){
         this.dateList.push(i);
