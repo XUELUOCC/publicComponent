@@ -189,7 +189,7 @@ export default {
             this.lastArr=this.dateList.slice(0,this.listWeek.length) 
             console.log(this.lastArr)
             console.log(i)
-            console.log(this.lastArr.length)
+            // console.log(this.lastArr.length)
             if(this.lastArr.length>=i+1 ){
               console.log(i+1)
               if(this.month>1){

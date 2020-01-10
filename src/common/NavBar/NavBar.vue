@@ -8,6 +8,7 @@
       <router-link to='/identifyCode'>验证码组件</router-link>
       <router-link to='/infiniteScroll'>无限下拉滚动指令</router-link>
       <router-link to='/datePicker'>日历组件</router-link>
+      <router-link to='/toolTip'>文字提示组件</router-link>
 
   </div>
 </template>

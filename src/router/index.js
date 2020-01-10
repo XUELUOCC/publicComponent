@@ -8,6 +8,8 @@ import IdentifyCode from '@/components/IdentifyCode'
 import Model from '@/components/Model'
 import InfiniteScroll from '@/common/infiniteScroll/InfiniteScroll.vue'
 import DatePicker from '@/common/DatePicker/DatePicker.vue'
+import ToolTip from '@/common/toolTip/ToolTip.vue'
+import ToolTipPage from '@/common/toolTip/toolTipPage.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -55,7 +57,12 @@ export default new Router({
       path:'/datePicker',
       name:'DatePicker',
       component:DatePicker
-    }
+    },
+    {
+      path:'/toolTip',
+      name:'ToolTipPage',
+      component:ToolTipPage
+    },
     
   ]
 })
