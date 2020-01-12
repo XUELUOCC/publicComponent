@@ -1,10 +1,18 @@
 <template>
   <div>
       <!-- <h3>文字提示组件</h3> -->
-      <div >
+      <div class="content">
+            <slot></slot>
           <div class="contents" v-if="show">
               <!-- <div>我是文字提示组件{{show}}</div> -->
-              <slot></slot>
+               <div class="text">
+                <span>菜单-1</span>
+                <span>菜单-2</span>
+                <span>菜单-3</span>
+                <span>菜单-4</span>
+                <span>菜单-5</span>
+                <span>菜单-6</span>
+              </div>
               <span class="tips"></span>
           </div>
       </div>
@@ -21,7 +29,7 @@ export default {
     },
     data () {
         return {
-            show:true,
+            show:false,
         }
     },
     watch:{
@@ -44,9 +52,16 @@ export default {
 </script>
 
 <style scoped>
+.content{
+    position:relative;
+    /* border:1px solid black; */
+}
 .contents{
     /* border:1px solid #ccc; */
     /* width:50px; */
+    position:absolute;
+    left:20px;
+    top:-45px;
     display: inline-block;
     border-radius: 4px;
     background-color:rgba(0,0,0,0.5);   

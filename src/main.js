@@ -18,9 +18,9 @@ import 'mint-ui/lib/style.css';
 Vue.use(Mint);
 
 //使用mui
-import './assets/lib/mui/dist/css/mui.css'
-import mui from './assets/lib/mui/dist/js/mui'
-Vue.prototype.mui=mui;
+// import './assets/lib/mui/dist/css/mui.css'
+// import mui from './assets/lib/mui/dist/js/mui'
+// Vue.prototype.mui=mui;
 
 //ant design vue
 import Antd from 'ant-design-vue'

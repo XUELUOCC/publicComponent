@@ -3,17 +3,20 @@
       <div class='content'>
           <!-- <a href="#" class="toolTip">文字提示组件</a> -->
           <div>
-               <el-button style="block"  @mouseover.native="open" @mouseleave.native="close">文字提示组件</el-button>
+               <!-- <el-button style="block"  @mouseover.native="open" @mouseleave.native="close">文字提示组件</el-button> -->
           </div>
           <tool-tip  class="toolTip" ref="model" :visible="visible">
-              <div class="text">
+            <div class="btn">
+                <el-button  @mouseover.native="open" @mouseleave.native="close">文字提示组件</el-button>
+            </div>
+              <!-- <div class="text">
                 <span>菜单-1</span>
                 <span>菜单-2</span>
                 <span>菜单-3</span>
                 <span>菜单-4</span>
                 <span>菜单-5</span>
                 <span>菜单-6</span>
-              </div>
+              </div> -->
           </tool-tip>
           <div >
       </div>
@@ -52,7 +55,7 @@ export default {
     width:100%;
     /* height:200px; */
     /* display:inline-block; */
-    border:1px solid red;
+    /* border:1px solid red; */
     padding-top:20px;
     /* position:relative; */
 }
@@ -61,5 +64,9 @@ export default {
     /* margin:0 0 40px 20px; */
     top:0;
     z-index:999;
+}
+.btn{
+    position:absolute;
+    left:20px;
 }
 </style>
