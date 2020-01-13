@@ -9,7 +9,7 @@
 
 日历组件，在src\common\DatePicker中，实现基本的日历切换和查看功能
 
-文字提示组件,在src\common/toolTip中，toolPage.vue是其中的父组件(默认显示的页面),toolTip.vue是子组件(toolTip标签的内容)，除了实现基本的文字提示，同样可以在其中的内容添加任何内容。
+文字提示组件,在src\common/toolTip中，toolPage.vue是其中的父组件(默认显示的页面),toolTip.vue是子组件(toolTip标签的内容)，除了实现基本的文字提示，同样可以在其中的内容区域添加任何内容。
 
 ---1.使用插槽，在子组件的标签中插入dom元素，在子组件中显示，
 
