@@ -10,6 +10,7 @@ import InfiniteScroll from '@/common/infiniteScroll/InfiniteScroll.vue'
 import DatePicker from '@/common/DatePicker/DatePicker.vue'
 import ToolTip from '@/common/toolTip/ToolTip.vue'
 import ToolTipPage from '@/common/toolTip/toolTipPage.vue'
+import ColorPicker from '@/common/colorPicker/colorPicker.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -63,6 +64,11 @@ export default new Router({
       name:'ToolTipPage',
       component:ToolTipPage
     },
+    {
+      path:'/colorPicker',
+      name:'ColorPicker',
+      component:ColorPicker
+    }
     
   ]
 })
