@@ -44,5 +44,6 @@ export default {
 a{
   font-size: 18px;
   display:block;
+  text-decoration: none;
 }
 </style>

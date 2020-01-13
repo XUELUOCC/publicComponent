@@ -36,6 +36,8 @@ export default {
         // console.log(this.$refs.heightTest)
         if(this.$refs.heightTest){
              this.heightContent='-'+(this.$refs.heightTest.clientHeight+15)+'px'
+             console.log(this.$refs.heightTest.clientHeight)
+             console.log(this.$refs.heightTest.offsetHeight)
         }
     },
     methods: {
