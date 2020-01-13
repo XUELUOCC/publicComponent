@@ -89,7 +89,7 @@ export default {
       this.year=new Date().getFullYear();
       this.month= new Date().getMonth()+1;
       this.day=new Date().getDate();
-      this.date=this.year+'年'+this.month+'月'+this.day+'日';
+      this.date=this.year+'年'+this.month+'月';
       console.log(this.date)
       this.setDay();
     },
@@ -98,13 +98,13 @@ export default {
       console.log(this.date)
       this.year=this.year-1;
       this.setDay()
-      this.date=this.year+'年'+this.month+'月'+this.day+'日';
+      this.date=this.year+'年'+this.month+'月';
     },
     //年份增加
     DateYearAdd(){
        this.year=this.year+1;
        this.setDay()
-       this.date=this.year+'年'+this.month+'月'+this.day+'日';
+       this.date=this.year+'年'+this.month+'月';
     },
     //月份递减
     DateMonthReduce(){
@@ -114,7 +114,7 @@ export default {
         this.year--;
         this.month=12;
       }
-      this.date=this.year+'年'+this.month+'月'+this.day+'日';
+      this.date=this.year+'年'+this.month+'月';
        this.setDay()
     },
     //月份增加
@@ -129,7 +129,7 @@ export default {
       }
       console.log(this.month,this.year)
        this.setDay()
-      this.date=this.year+'年'+this.month+'月'+this.day+'日';
+      this.date=this.year+'年'+this.month+'月';
     },
     setDay(){
       console.log(this.month)
@@ -164,7 +164,7 @@ export default {
       //
       console.log(this.dateList)
       console.log(this.month,this.year)
-      this.date=this.year+'年'+this.month+'月'+this.day+'日';
+      this.date=this.year+'年'+this.month+'月';
 
       //给当前日期添加样式
       for(var i=0;i<this.dateList.length;i++){
@@ -193,13 +193,13 @@ export default {
             if(this.lastArr.length>=i+1 ){
               console.log(i+1)
               if(this.month>1){
-                this.date=this.year+'年'+(this.month-1)+'月'+this.day+'日';
+                this.date=this.year+'年'+(this.month-1)+'月';
               }else{
-                this.date=(this.year-1)+'年'+12+'月'+this.day+'日';
+                this.date=(this.year-1)+'年'+12+'月';
               }
             console.log(this.date)
             }else{
-              this.date=this.year+'年'+this.month+'月'+this.day+'日';
+              this.date=this.year+'年'+this.month+'月';
             }
             
           }
