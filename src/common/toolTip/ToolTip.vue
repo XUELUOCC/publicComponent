@@ -3,16 +3,8 @@
       <!-- <h3>文字提示组件</h3> -->
       <div class="content">
             <slot></slot>
-          <div class="contents" v-if="show">
-              <!-- <div>我是文字提示组件{{show}}</div> -->
-               <div class="text">
-                <span>菜单-1</span>
-                <span>菜单-2</span>
-                <span>菜单-3</span>
-                <span>菜单-4</span>
-                <span>菜单-5</span>
-                <span>菜单-6</span>
-              </div>
+          <div class="contents" v-if="show" ref="heightTest" :style="{top:heightContent}">
+              <slot name="content"></slot>
               <span class="tips"></span>
           </div>
       </div>
@@ -24,29 +16,30 @@ export default {
     props:{
         visible:{
             type:Boolean,
-            default:false
-        }
+            default:false,
+        },
+        // height:Number
     },
     data () {
         return {
             show:false,
+            heightContent:''
         }
     },
     watch:{
         visible(){
             this.show=this.visible
             console.log(this.show)
-        }
+        },
     },
-    mounted(){
-        console.log(this.visible)
+    updated(){
+        // console.log(this.$refs.heightTest)
+        if(this.$refs.heightTest){
+             this.heightContent='-'+(this.$refs.heightTest.clientHeight+15)+'px'
+        }
     },
     methods: {
-        child(){
-            if(this.show==true){
-                this.$emit('update:visible',this.show)
-            }
-        }
+        
     },
 }
 </script>
@@ -59,6 +52,8 @@ export default {
 .contents{
     /* border:1px solid #ccc; */
     /* width:50px; */
+    min-width:100px;
+    min-height: 30px;
     position:absolute;
     left:20px;
     top:-45px;

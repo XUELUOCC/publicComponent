@@ -1,22 +1,32 @@
 <template>
   <div>
       <div class='content'>
-          <!-- <a href="#" class="toolTip">文字提示组件</a> -->
-          <div>
-               <!-- <el-button style="block"  @mouseover.native="open" @mouseleave.native="close">文字提示组件</el-button> -->
-          </div>
-          <tool-tip  class="toolTip" ref="model" :visible="visible">
-            <div class="btn">
+          <h3>文字提示组件</h3>
+          <tool-tip  class="toolTip" ref="model" :visible="visible" >
+            <!--按钮区-->
+            <div class="btn" >
                 <el-button  @mouseover.native="open" @mouseleave.native="close">文字提示组件</el-button>
             </div>
-              <!-- <div class="text">
-                <span>菜单-1</span>
+            <!--按钮区-->
+            <!--内容区-->
+              <div class="text" slot="content" ref="heightContent">
+                <span>菜单-1-----</span>
                 <span>菜单-2</span>
                 <span>菜单-3</span>
                 <span>菜单-4</span>
                 <span>菜单-5</span>
                 <span>菜单-6</span>
-              </div> -->
+                <!-- <img src="../../assets/logo.png" alt=""> -->
+                <el-timeline :reverse="reverse">
+                    <el-timeline-item
+                    v-for="(activity, index) in activities"
+                    :key="index"
+                    :timestamp="activity.timestamp">
+                    {{activity.content}}
+                    </el-timeline-item>
+                </el-timeline>
+              </div>
+            <!--内容区-->
           </tool-tip>
           <div >
       </div>
@@ -33,8 +43,25 @@ export default {
     },
     data () {
         return {
-        visible:false,
-        }
+            visible:false,
+            reverse: true,
+            activities: [
+                {
+                content: '活动按期开始',
+                timestamp: '2018-04-15'
+                }, 
+                {
+                content: '通过审核',
+                timestamp: '2018-04-13'
+                }, 
+                {
+                content: '创建成功',
+                timestamp: '2018-04-11'
+                }
+            ]
+            }
+    },
+    mounted(){
     },
     methods: {
         open(){
@@ -68,5 +95,11 @@ export default {
 .btn{
     position:absolute;
     left:20px;
+    /* border:1px solid red; */
+    height:40px;
+}
+.text img{
+    width:100px;
+    height:100px;
 }
 </style>
