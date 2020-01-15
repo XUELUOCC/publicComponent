@@ -45,7 +45,7 @@ export default {
       var b=event.clientY- this.$refs.roll.offsetTop;
       console.log(g,b) 
       this.color='rgb('+'0,'+g+','+b+')';
-      console.log(this.color)
+      // console.log(this.color)
     }
   
   }
