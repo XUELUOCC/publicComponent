@@ -1,22 +1,24 @@
 <template>
   <div>
-      <h3>颜色选择器</h3>
+      <h3>颜色选择器(未完成，思路转换成画布)</h3>
       <div class="content">
         <div class="colorPickerContent">
           <div class="colorPicker">
             <div class="left" ref="left"></div>
             <div class="right" ref="right"></div>
           </div>
-          <div class="roll"></div>
+          <div class="roll" @click="getColor" ref="roll"></div>
         </div>
         <div class="bottom">
           <input type="text" class="inputs" v-model="color">
           <div>
             <span style="margin-right:10px;color:#409eff">清除</span>
-            <button class="btn">确定</button>
+            <button class="btn" >确定</button>
           </div>     
         </div>
       </div>
+
+      <div class="test" :style="{background:color}"></div>
       
   </div>
    
@@ -38,13 +40,25 @@ export default {
     colorClick(e){
       console.log(e)
     },
+    getColor(event){
+      var g=event.clientX- this.$refs.roll.offsetLeft;
+      var b=event.clientY- this.$refs.roll.offsetTop;
+      console.log(g,b) 
+      this.color='rgb('+'0,'+g+','+b+')';
+      console.log(this.color)
+    }
   
   }
 }
 </script>
 
 <style scoped>
-
+.test{
+  width:100px;
+  height:30px;
+  border:1px solid #ccc;
+  margin:20px 30px;
+}
 .content{
   border:1px solid #ccc;
   width:510px;
