@@ -1,6 +1,6 @@
 <template>
   <div id="app" >
-    <!-- <h3>入口组件</h3> -->
+    <!-- <h3>入口</h3> -->
     <!-- <img src="./assets/logo.png"> -->
     <div class="content">
        <navBar></navBar>
