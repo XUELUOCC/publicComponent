@@ -10,8 +10,9 @@
       @touchend="touchEnd"
       >
       {{item.name}}
+       <div :class="[flagLeftPage ? 'tree itemLeft':'tree']" id="leftPage" ></div>
       </div>
-      <div class="tree" id="leftPage" ></div>
+
     </div>
 
   </div>
@@ -41,7 +42,7 @@ export default {
       ],
       leftPageDiv:'',
       oDiv:'',
-      flag1:false,
+      flagLeftPage:false,
       flag2:false,
     }
   },
@@ -62,7 +63,6 @@ export default {
       e.preventDefault();
       this.oDiv=e.currentTarget
       this.startLen=e.changedTouches[0].pageX;
-      document.getElementById('leftPage').style.right=0+'px'
     },
     touchMove(e){
       console.log(e)
@@ -75,6 +75,7 @@ export default {
         this.oDiv.style.transition='1s'
         this.oDiv.style.boxShadow="0 0 0 0"
         document.getElementById('leftPage').style.right=375+'px'
+        document.getElementById('leftPage').style.width=(this.endLen -this.startLen)+'px'
         setTimeout(()=>{
            this.oDiv.style.zIndex=-1;
         },900)
@@ -86,24 +87,25 @@ export default {
       this.oDiv.style.width=this.moveLen+'px'
       document.getElementById('leftPage').style.right=Math.abs(this.endLen -this.startLen)+'px'
       document.getElementById('leftPage').style.width=(this.endLen -this.startLen)+'px'
+      document.getElementById('leftPage').style.height='100%'
     },
     touchEnd(e){
       console.log('手指松开')
       this.oDiv.style.width=0+'px'
       this.oDiv.style.transition='1s'
       this.oDiv.style.boxShadow="0 0 0 0"
-      // setTimeout(()=>{
 
-      // },900)
-      document.getElementById('leftPage').style.width=60+'px'
-      document.getElementById('leftPage').style.transition='1s'
-      document.getElementById('leftPage').style.right=375+'px'
+      // document.getElementById('leftPage').style.width=60+'px'
+      // document.getElementById('leftPage').style.transition='1s'
+      // document.getElementById('leftPage').style.right=375+'px'
+      this.flagLeftPage=true;
       setTimeout(()=>{
         console.log(document.getElementById('leftPage').style.width)
         this.oDiv.style.zIndex=-1;
-        document.getElementById('leftPage').style.right=0+'px'
-        document.getElementById('leftPage').style.width=1+'px'
-        document.getElementById('leftPage').style.transition='0'
+        this.flagLeftPage=false;
+        // document.getElementById('leftPage').style.right=0+'px'
+        // document.getElementById('leftPage').style.width=1+'px'
+        // document.getElementById('leftPage').style.transition='0'
       },900)
     }
   }
@@ -157,17 +159,20 @@ export default {
   transition:2s;
 }
 .tree{
-  width:1px;
+  width:0px;
   height:100%;
   position:absolute;
   right:0;
   z-index:999;
-  background-color:antiquewhite;
+  /* background-color:antiquewhite; */
   box-shadow: -10px -1px 5px  rgba(65, 68, 68, 0.5) inset,-5px -1px 3px  rgba(65, 68, 68, 0.5);
-  border-left:1px solid #ddd;
+
 }
 .itemLeft{
-  width:80px;
+  width:60px;
+  /* height:100%; */
   transition:2s;
+  right:375px;
+  border-left:1px solid #ddd;
 }
 </style>
