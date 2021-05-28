@@ -11,6 +11,7 @@ import DatePicker from '@/common/DatePicker/DatePicker.vue'
 import ToolTip from '@/common/toolTip/ToolTip.vue'
 import ToolTipPage from '@/common/toolTip/toolTipPage.vue'
 import ColorPicker from '@/common/colorPicker/colorPicker.vue'
+import turnPage from '@/components/turnPage.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -68,7 +69,12 @@ export default new Router({
       path:'/colorPicker',
       name:'ColorPicker',
       component:ColorPicker
+    },
+    {
+      path:'/turnPage',
+      name:'turnPage',
+      component:turnPage
     }
-    
+
   ]
 })

@@ -14,36 +14,41 @@
         </el-input>
           <!-- <el-button type="primary" @click='search'>搜索</el-button> -->
         </div>
-        
-          <el-table
-          :data="tableData"
-          border      
-          style="width:100%;margin:0 auto;margin-top:20px;">
-          <el-table-column
-            prop="date"
-            label="日期"
-            width="180">
-          </el-table-column>
-          <el-table-column
-            prop="name"
-            label="姓名"
-            width="180">
-          </el-table-column>
-          <el-table-column
-            prop="address"
-            label="地址">
-          </el-table-column>
-           <el-table-column
-            prop="grender"
-            label="性别">
-          </el-table-column>
-        </el-table>
+
+          <el-table  :data="dataList" id="out-table" border  stripe fit>
+              <el-table-column label="职位名称" align="center" width="100" >
+                 <template slot-scope="scope" >
+                  {{ scope.row.posnName}}
+                </template>
+              </el-table-column>
+              <el-table-column label="计划名称" align="center" width="150" >
+                 <template slot-scope="scope">
+                  {{scope.row.title}}
+                </template>
+              </el-table-column>
+              <el-table-column label="计划内批次统计">
+                <el-table-column label="批次" align="center" width="150">
+                  <template slot-scope="scope" >
+                    {{'批次'+ scope.row.batch}}
+                </template>
+                </el-table-column>
+                <el-table-column label="批次内需求数量" align="center" width="150" >
+                   <template slot-scope="scope" >
+                  {{scope.row.shouldBeRecruited}}
+                </template>
+                </el-table-column>
+               </el-table-column>
+            </el-table>
+        <el-button @click="download">导出</el-button>
+        <el-button @click="download1">导出1</el-button>
       </div>
-   
+
   </div>
 </template>
 
 <script>
+import FileSaver from "file-saver";
+    import XLSX from "xlsx";
 import navBar from '../common/NavBar/NavBar'
 import common from '../components/common'
 export default {
@@ -55,12 +60,12 @@ export default {
     return {
       msg: '',
       search:'',
-      datas:[
+      dataList:[
         {
-          date: '2016-05-02',
-          name: '王辉',
-          address: '上海市普陀区金沙江路 1518 弄',
-          grender:0
+          posnName: '2016-05-02',
+          title: '王辉',
+          batch: '上海市普陀区金沙江路 1518 弄',
+          shouldBeRecruited:0
         }, {
           date: '2016-05-04',
           name: '李云',
@@ -82,15 +87,65 @@ export default {
   },
   methods: {
     setData(){
-      console.log(this.datas)
-      this.datas.forEach((item)=>{
-        if(item.grender==0){
-          item.grender='女'
-        }else if(item.grender==1){
-          item.grender='男'
-        }
-      })
-    } 
+      // console.log(this.datas)
+      // this.datas.forEach((item)=>{
+      //   if(item.grender==0){
+      //     item.grender='女'
+      //   }else if(item.grender==1){
+      //     item.grender='男'
+      //   }
+      // })
+    } ,
+      download(){
+        /* 从表生成工作簿对象 */
+        var wb = XLSX.utils.table_to_book(document.querySelector("#out-table"));
+        /* 获取二进制字符串作为输出 */
+        var wbout = XLSX.write(wb, {
+                  bookType: "xlsx",
+                  bookSST: true,
+                  type: "array"
+                });
+        try {
+            FileSaver.saveAs(
+            //Blob 对象表示一个不可变、原始数据的类文件对象。 //Blob 表示的不一定是JavaScript原生格式的数据。
+            //File 接口基于Blob，继承了 blob 的功能并将其扩展使其支持用户系统上的文件。
+            //返回一个新创建的 Blob 对象，其内容由参数中给定的数组串联组成。
+            new Blob([wbout], { type: "application/octet-stream" }),
+            //设置导出文件名称
+            "sheetjs.xlsx"
+            );
+            } catch (e) {
+                if (typeof console !== "undefined")
+                    console.log(e, wbout);
+              }
+              return wbout;
+      },
+        download1(){
+        /* 从表生成工作簿对象 */
+        var wb = XLSX.utils.table_to_book(document.querySelector("#out-table"));
+        /* 获取二进制字符串作为输出 */
+        var wbout = XLSX.write(wb, {
+                  bookType: "xlsx",
+                  bookSST: true,
+                  type: "array"
+                });
+        try {
+            FileSaver.saveAs(
+            //Blob 对象表示一个不可变、原始数据的类文件对象。 //Blob 表示的不一定是JavaScript原生格式的数据。
+            //File 接口基于Blob，继承了 blob 的功能并将其扩展使其支持用户系统上的文件。
+            //返回一个新创建的 Blob 对象，其内容由参数中给定的数组串联组成。
+            new Blob([wbout], { type: "application/octet-stream" }),
+            //设置导出文件名称
+            "sheetjs.xlsx"
+            );
+            } catch (e) {
+                if (typeof console !== "undefined")
+                    console.log(e, wbout);
+              }
+              return wbout;
+      }
+
+
   },
   mounted(){
     this.setData()

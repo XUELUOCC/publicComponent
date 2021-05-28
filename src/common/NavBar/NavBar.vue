@@ -1,7 +1,7 @@
 <template>
   <div id="bar">
 
-      <router-link to='/homePage'>首页</router-link>
+      <!-- <router-link to='/homePage'>首页</router-link>
       <router-link to='/country' >书城</router-link>
       <router-link to='/person'>用户</router-link>
       <router-link to='/model'>弹窗组件</router-link>
@@ -9,7 +9,8 @@
       <router-link to='/infiniteScroll'>无限下拉滚动指令</router-link>
       <router-link to='/datePicker'>日历组件</router-link>
       <router-link to='/toolTip'>文字提示组件</router-link>
-      <router-link to="/colorPicker">颜色选择器</router-link>
+      <router-link to="/colorPicker">颜色选择器</router-link> -->
+      <router-link to="/turnPage">翻页</router-link>
 
   </div>
 </template>
@@ -22,10 +23,10 @@ export default {
     }
   },
   mounted(){
-    
+
   },
   methods: {
-  
+
   }
 }
 </script>

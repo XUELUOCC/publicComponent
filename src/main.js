@@ -29,6 +29,8 @@ Vue.use(Antd)
 
 Vue.config.productionTip = false
 
+// import store from './store'
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
